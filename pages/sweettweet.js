@@ -5,7 +5,7 @@
   </h1>
   <form>
     Twitter Handle:<br>
-    <input type="text" name ="handle"><br>
+    <input type="text" name ="handle"/><br>
   </form>
   </body>
 </html>

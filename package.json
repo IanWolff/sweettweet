@@ -1,0 +1,19 @@
+{
+  "name": "sweettweet",
+  "version": "1.0.0",
+  "description": "Sweet Tweet Website",
+  "main": "index.js",
+  "dependencies": {
+    "next": "^2.0.1",
+    "react-dom": "^15.4.2",
+    "react": "^15.4.2"
+  },
+  "devDependencies": {},
+  "scripts": {
+    "dev":"next",
+    "build":"next build",
+    "start":"next start -p $P0RT"
+  },
+  "author": "Paxton Head",
+  "license": "MIT"
+}

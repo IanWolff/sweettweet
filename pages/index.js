@@ -1,17 +1,14 @@
+import HandlesForm from '../components/handles'
+
 export default class Index extends React.Component{
   render(){
     return(
-      <html>
-        <body>
+      <div className="Index">
           <h1>
             Sweet Tweet
-            </h1>
-            <form>
-            Twitter Handle:<br/>
-            <input type="text" name ="handle"/><br/>
-            </form>
-          </body>
-        </html>
+          </h1>
+          <HandlesForm/>
+      </div>
     )
 
   }

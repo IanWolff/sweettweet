@@ -842,6 +842,7 @@ class MarkovBot():
                try:
                	# Attempt to get the next tweet.
                   tweet = iterator.__next__()
+                  print("I tried to get the next tweet")
                except StopIteration:
                	# Restart the iterator, and skip the rest of
                	# the loop.
@@ -1374,21 +1375,21 @@ class MarkovBot():
       	# Reduce the amount of words if the response is too long
          if len(response) > 140:
             sl -= 1
-   	
-      return self._code.stringSwitch(self._tweetText)
+      self._autoreplying = True
+      return self._code.stringSwitch(self._tweetText) + " " +suffix
 	
 	
    def _error(self, methodname, msg):
    	
       """Raises an Exception on behalf of the method involved.
-   	
-   	Arguments
-   	
-   	methodname	-	String indicating the name of the method that is
-   					throwing the error.
-   	
-   	message		-	String with the error message.
-   	"""
+   
+   Arguments
+   
+   methodname	-	String indicating the name of the method that is
+   				throwing the error.
+   
+   message		-	String with the error message.
+   """
    	
       raise Exception(u"ERROR in Markovbot.%s: %s" % (methodname, msg))
 
@@ -1396,21 +1397,21 @@ class MarkovBot():
    def _isalphapunct(self, string):
    	
       """Returns True if all characters in the passed string are
-   	alphabetic or interpunction, and there is at least one character in
-   	the string.
-   	
-   	Allowed interpunction is . , ; : ' " ! ?
-   	
-   	Arguments
-   	
-   	string	-		String that needs to be checked.
-   	
-   	Returns
-   	
-   	ok			-	Boolean that indicates whether the string
-   					contains only letters and allowed interpunction
-   					(True) or not (False).
-   	"""
+   alphabetic or interpunction, and there is at least one character in
+   the string.
+   
+   Allowed interpunction is . , ; : ' " ! ?
+   
+   Arguments
+   
+   string	-		String that needs to be checked.
+   
+   Returns
+   
+   ok			-	Boolean that indicates whether the string
+   				contains only letters and allowed interpunction
+   				(True) or not (False).
+   """
    	
       if string.replace(u'.',u'').replace(u',',u'').replace(u';',u''). \
       	replace(u':',u'').replace(u'!',u'').replace(u'?',u''). \
@@ -1423,15 +1424,15 @@ class MarkovBot():
    def _message(self, methodname, msg):
    	
       """Prints a message on behalf of the method involved. Friendly
-   	verion of self._error
-   	
-   	Arguments
-   	
-   	methodname	-	String indicating the name of the method that is
-   					throwing the error.
-   	
-   	message		-	String with the error message.
-   	"""
+   verion of self._error
+   
+   Arguments
+   
+   methodname	-	String indicating the name of the method that is
+   				throwing the error.
+   
+   message		-	String with the error message.
+   """
    	
       print(u"MSG from Markovbot.%s: %s" % (methodname, msg))
 
@@ -1439,8 +1440,8 @@ class MarkovBot():
    def _self_examination(self):
    	
       """This function runs in the self-examination Thread, and
-   	continuously checks whether the other Threads are still alive.
-   	"""
+   continuously checks whether the other Threads are still alive.
+   """
    	
    	# Run until the Boolean is set to False.
       while self._selfexaminationthreadlives:
@@ -1455,22 +1456,22 @@ class MarkovBot():
    def _triples(self, words):
    
       """Generate triplets from the word list
-   	This is inspired by Shabda Raaj's blog on Markov text generation:
-   	http://agiliq.com/blog/2009/06/generating-pseudo-random-text-with-markov-chains-u/
-   	
-   	Moves over the words, and returns three consecutive words at a time.
-   	On each call, the function moves one word to the right. For example,
-   	"What a lovely day" would result in (What, a, lovely) on the first
-   	call, and in (a, lovely, day) on the next call.
-   	
-   	Arguments
-   	
-   	words		-	List of strings.
-   	
-   	Yields
-   	
-   	(w1, w2, w3)	-	Tuple of three consecutive words
-   	"""
+   This is inspired by Shabda Raaj's blog on Markov text generation:
+   http://agiliq.com/blog/2009/06/generating-pseudo-random-text-with-markov-chains-u/
+   
+   Moves over the words, and returns three consecutive words at a time.
+   On each call, the function moves one word to the right. For example,
+   "What a lovely day" would result in (What, a, lovely) on the first
+   call, and in (a, lovely, day) on the next call.
+   
+   Arguments
+   
+   words		-	List of strings.
+   
+   Yields
+   
+   (w1, w2, w3)	-	Tuple of three consecutive words
+   """
    	
    	# We can only do this trick if there are more than three words left
       if len(words) < 3:

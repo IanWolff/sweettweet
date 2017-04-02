@@ -242,7 +242,10 @@ class SweetTweet:
 # Start auto-responding to tweets by calling twitter_autoreply_start
 # This function operates in a Thread in the background, so your code will not
 # block by calling it.
-   tweetbot.twitter_autoreply_start(targetstring, keywords=keywords, prefix=prefix, suffix=suffix, maxconvdepth=maxconvdepth)
+   timer = time.clock()
+   while time.clock() < timer + 120: 
+      tweetbot.twitter_autoreply_start(targetstring, keywords=keywords, prefix=prefix, suffix=suffix, maxconvdepth=maxconvdepth)
+      print(targetstring)
    #tw = tweetbot._tweets
 # Start periodically tweeting. This will post a tweet every X days, hours, and
 # minutes. (You're free to choose your own interval, but please don't use it to
@@ -253,12 +256,12 @@ class SweetTweet:
 
 # DO SOMETHING HERE TO ALLOW YOUR BOT TO BE ACTIVE IN THE BACKGROUND
 # You could, for example, wait for a week:
-   secsinweek = 7 * 24 * 60 * 60
-   time.sleep(75)
+      secsinweek = 7 * 24 * 60 * 60
+      time.sleep(5)
  
 # Use the following to stop auto-responding
 # (Don't do this directly after starting it, or your bot will do nothing!)
-   tweetbot.twitter_autoreply_stop()
+      tweetbot.twitter_autoreply_stop()
 
 # Use the following to stop periodically tweeting
 # (Don't do this directly after starting it, or your bot will do nothing!)

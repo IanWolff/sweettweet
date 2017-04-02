@@ -47,7 +47,7 @@ class MarkovBot():
 	post updates to Twitter accounts.
 	"""
 	
-   def __init__(self, handle):
+   def __init__(self, handle): #took out handle param
    	
       """Initialises the bot.
    	"""

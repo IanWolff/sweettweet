@@ -14,7 +14,8 @@ from Linked_List import Linked_List
 #from Code import Code
 
 class SweetTweet:
-   
+   #def __init__(self,handle):
+    #  self._handle = handle
    class _Code:
     #self.nicePositiveList = Linked_List()
     #self.niceNegativeList = Linked_List()
@@ -149,7 +150,7 @@ class SweetTweet:
 # Initialise a MarkovBot instance
    #@connormahlbache
    handle = input("Enter your twitter handle: ")
-   tweetbot = MarkovBot(handle)
+   tweetbot = MarkovBot(handle)#took out self._handle param
    goodWords1 = code.listToArray(goodWords)
    thefile = open('replies.txt', 'w')
    for item in goodWords1:
@@ -203,7 +204,7 @@ class SweetTweet:
 # The target string is what the bot will reply to on Twitter. To learn more,
 # read: https://dev.twitter.com/streaming/overview/request-parameters#track
    
-   targetstring = tweetbot._handle
+   targetstring =  tweetbot._handle
    print(targetstring)
    
    iterator = tweetbot._ts.statuses.filter(track=tweetbot._targetstring)

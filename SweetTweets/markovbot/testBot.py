@@ -14,6 +14,7 @@ from Linked_List import Linked_List
 #from Code import Code
 
 class SweetTweet:
+   
    class _Code:
     #self.nicePositiveList = Linked_List()
     #self.niceNegativeList = Linked_List()
@@ -146,15 +147,19 @@ class SweetTweet:
 # INITIALISE
 
 # Initialise a MarkovBot instance
-   tweetbot = MarkovBot()
-
+   handle = 'Dankpocalypse16'
+   tweetbot = MarkovBot(handle)
+   goodWords1 = code.listToArray(goodWords)
+   thefile = open('replies.txt', 'w')
+   for item in goodWords1:
+      thefile.write("%s\n" % item)
 # Get the current directory's path
    dirname = os.path.dirname(os.path.abspath(__file__))
 # Construct the path to the book
    book = os.path.join(dirname, 'Freud_Dream_Psychology.txt')
 # Make your bot read the book!
    tweetbot.read(book)
-
+   
 
 # # # # #
 # TEXT GENERATION
@@ -196,8 +201,8 @@ class SweetTweet:
    print("Logged in")
 # The target string is what the bot will reply to on Twitter. To learn more,
 # read: https://dev.twitter.com/streaming/overview/request-parameters#track
-   index = randint(0,len(badWords))
-   targetstring = '@Dankpocalypse16'
+   
+   targetstring = tweetbot._handle
    print(targetstring)
    
    iterator = tweetbot._ts.statuses.filter(track=tweetbot._targetstring)
@@ -217,10 +222,10 @@ class SweetTweet:
    print(code.listToArray(code.getPositiveList()))
    keywords = code.listToArray(code.getNegativeList())
    print(keywords)
-   replacementWords = [None]*len(keywords)
-   for i in range(0,len(keywords)):
-      replacementWords[i] = code.stringSwitch(keywords[i])
-   print(replacementWords)
+   #replacementWords = [None]*len(keywords)
+   #for i in range(0,len(keywords)):
+    #  replacementWords[i] = code.stringSwitch(keywords[i])
+   #print(replacementWords)
 # The prefix will be added to the start of all outgoing tweets.
    prefix = None
 # The suffix will be added to the end of all outgoing tweets.

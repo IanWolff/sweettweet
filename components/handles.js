@@ -1,7 +1,7 @@
 export default class HandlesForm extends React.Component {
   constructor(props) {
     super(props);
-    this.handle = {value: ''};
+    this.state = {value: ''};
     this.handleChange = this.handleChange.bind(this);
     this.handleSubmit = this.handleSubmit.bind(this);
   }
@@ -11,15 +11,13 @@ export default class HandlesForm extends React.Component {
   }
 
   handleSubmit(event) {
+    var handle = this.state.value;
+    var check = handle.substring(0,1);
+    if (check == '@') {
+      alert('Valid')
+    };
     alert('A handle was submitted: ' + this.state.value);
-    $.ajax({
-      type: "POST",
-      url: "~/markovbot35.py",
-      data: { param: this.handle}
-    }).done(function( o ) {
-      consol.log(data);
-      consol.log(this.handle)
-    });
+
   }
 
   render() {
@@ -27,7 +25,7 @@ export default class HandlesForm extends React.Component {
       <form onSubmit={this.handleSubmit}>
         <label>
           Twitter Handle:<br/>
-          <input type="text" id={this.handle.value} onChange={this.handleChange} />
+          <input type="text" id={this.state.value} onChange={this.handleChange} />
         </label>
         <input type="submit" value="Submit"/>
       </form>

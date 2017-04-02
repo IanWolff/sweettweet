@@ -233,7 +233,6 @@ unhealthyA
 unjustA
 unluckyA
 unpleasantA
-upsetA
 unsatisfactoryA
 unsightlyA
 untowardA

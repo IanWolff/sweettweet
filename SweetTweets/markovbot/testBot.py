@@ -96,7 +96,7 @@ class SweetTweet:
          tweetWords = string.split()
          array = []
          for word in tweetWords:
-            newWord = "".join(c for c in word if c not in ('!','.',':'))
+            newWord = "".join(c for c in word if c not in ('!','.',':',','))
             if self.binarySearch(newWord, self.badAdjectives):
                array.append(self.random(self.goodAdjectives))
             elif self.binarySearch(newWord, self.badNouns):

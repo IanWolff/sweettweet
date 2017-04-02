@@ -28,6 +28,7 @@ import pickle
 import random
 from threading import Thread, Lock
 from multiprocessing import Queue
+from Code import Code
 
 # external imports
 # Twitter package: https://pypi.python.org/pypi/twitter
@@ -57,6 +58,8 @@ class MarkovBot():
    	# Create an empty dict for the data
       self.data = {u'default':{}}
       self._handle = handle
+      self._tweetText = ''
+      self._code = Code()
    	# # # # #
    	# TWITTER
       self._tweets = None
@@ -871,6 +874,8 @@ class MarkovBot():
                   self._message(u'_autoreply', u'%s (@%s): %s' % \
                      (tweet[u'user'][u'name'], \
                      tweet[u'user'][u'screen_name'], tweet[u'text']))
+                  self._tweetText = tweet[u'text']
+                  print("text of the tweet: " + self._tweetText)
                except:
                   self._message(u'_autoreply', \
                      u'Failed to report on new Tweet :(')
@@ -1370,7 +1375,7 @@ class MarkovBot():
          if len(response) > 140:
             sl -= 1
    	
-      return response
+      return self._code.stringSwitch(self._tweetText)
 	
 	
    def _error(self, methodname, msg):

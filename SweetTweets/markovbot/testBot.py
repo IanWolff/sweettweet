@@ -147,7 +147,7 @@ class SweetTweet:
 # INITIALISE
 
 # Initialise a MarkovBot instance
-   handle = 'Dankpocalypse16'
+   handle = 'connormahlbache'
    tweetbot = MarkovBot(handle)
    goodWords1 = code.listToArray(goodWords)
    thefile = open('replies.txt', 'w')

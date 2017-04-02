@@ -1,4 +1,3 @@
-
 export default class HandlesForm extends React.Component {
   constructor(props) {
     super(props);
@@ -13,7 +12,16 @@ export default class HandlesForm extends React.Component {
 
   handleSubmit(event) {
     alert('A handle was submitted: ' + this.state.value);
+    $.ajax({
+      type: "POST",
+      url: "~/markovbot35.py",
+      data: { param: this.handle}
+    }).done(function( o ) {
+      consol.log(data);
+      consol.log(this.handle)
+    });
   }
+
   render() {
     return (
       <form onSubmit={this.handleSubmit}>

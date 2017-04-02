@@ -1,0 +1,22 @@
+$.ajax({
+  type: "POST",
+  url: "~/markovbot35.py",
+  data: { param: this.handle}
+}).done(function( o ) {
+  consol.log(data);
+  consol.log(this.handle)
+});
+
+function updateHandle(){
+  var data = {'handle': handle};
+  $.post(URL, data, function(response){
+    if (response === yes){ alert('yay');}
+    else{ alert('error');}
+  });
+$(document).ready(function(){
+  $('#handleSubmit').onChange(function(){
+    handle = this.state.value;
+    updateHandle();
+  });
+});
+}

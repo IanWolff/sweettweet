@@ -9,7 +9,6 @@ export default class HandlesForm extends React.Component {
   handleChange(event) {
     this.setState({value: event.target.value});
   }
-
   handleSubmit(event) {
     var handle = this.state.value;
     var check = handle.substring(0,1);

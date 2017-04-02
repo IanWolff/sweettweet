@@ -147,7 +147,8 @@ class SweetTweet:
 # INITIALISE
 
 # Initialise a MarkovBot instance
-   handle = 'connormahlbache'
+   #@connormahlbache
+   handle = input("Enter your twitter handle: ")
    tweetbot = MarkovBot(handle)
    goodWords1 = code.listToArray(goodWords)
    thefile = open('replies.txt', 'w')
@@ -245,7 +246,7 @@ class SweetTweet:
    timer = time.clock()
    while time.clock() < timer + 120: 
       tweetbot.twitter_autoreply_start(targetstring, keywords=keywords, prefix=prefix, suffix=suffix, maxconvdepth=maxconvdepth)
-      print(targetstring)
+      
    #tw = tweetbot._tweets
 # Start periodically tweeting. This will post a tweet every X days, hours, and
 # minutes. (You're free to choose your own interval, but please don't use it to

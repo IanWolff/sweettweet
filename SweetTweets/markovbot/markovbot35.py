@@ -46,7 +46,7 @@ class MarkovBot():
 	post updates to Twitter accounts.
 	"""
 	
-   def __init__(self):
+   def __init__(self, handle):
    	
       """Initialises the bot.
    	"""
@@ -56,8 +56,7 @@ class MarkovBot():
    
    	# Create an empty dict for the data
       self.data = {u'default':{}}
-   	
-   
+      self._handle = handle
    	# # # # #
    	# TWITTER
       self._tweets = None
@@ -1355,7 +1354,7 @@ class MarkovBot():
    	tweet		-	A string with a maximum length of 140 characters.
    	"""
    
-      sl = 0
+      sl = 20
       response = u''
       while response == u'' or len(response) > 140:
       	# Generate some random text

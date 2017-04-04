@@ -57,9 +57,15 @@ class MarkovBot():
    """Class to generate text with a Markov chain, with support to read and
 	post updates to Twitter accounts.
 	"""
+<<<<<<< HEAD
 
    def __init__(self, handle):
 
+=======
+	
+   def __init__(self, handle): #took out handle param
+   	
+>>>>>>> 8d79a7248a893d9104336fb166a38df919adea65
       """Initialises the bot.
    	"""
 
